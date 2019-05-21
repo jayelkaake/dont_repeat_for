@@ -9,9 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Jay El-Kaake"]
   spec.email         = ["najibkaake@gmail.com"]
 
-  spec.summary       = %q{Adds beautifully readable true/false flags to user and account active models (like devise).}
-  spec.description   = %q{This gem adds the ability for models to have an unlimited number of custom flags \
-                        that are stored within one database column cell instead of several columns.}
+  spec.summary       = %q{Allows you to easily run a code block only once every X amount of time}
+  spec.description   = %q{Allows you to easily run a code block only once every X amount of time}
   spec.homepage      = "https://www.github.com/jayelkaake/dont_repeat_for"
   spec.license       = "MIT"
 
