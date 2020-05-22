@@ -44,7 +44,7 @@ class DontRepeatFor
   end
 
   def storage_key
-    @storage_key ||= "DontRepeatFor/Keys/#{@key}"
+    @storage_key ||= "DontRepeatFor/v1/Keys/#{@key}"
   end
 
   def redis
