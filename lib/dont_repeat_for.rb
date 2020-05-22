@@ -24,19 +24,23 @@ class DontRepeatFor
 
     return nil if ran_recently?
 
-    remember_not_to_repeat!
+    set_key_expiry
 
     yield
   end
 
   private
 
-  def remember_not_to_repeat!
-    redis.set(storage_key, true, ex: time)
+  def set_key_expiry
+    redis.expire(storage_key, time)
   end
 
+  ##
+  # Using an incr to atomically get & set the value.
+  # If incr === 1 then the key was empty before incrementing
+  # Otherwise, it has already been incremented before expiring
   def ran_recently?
-    redis.get(storage_key)
+    redis.incr(storage_key) != 1
   end
 
   def storage_key
