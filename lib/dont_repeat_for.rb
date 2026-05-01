@@ -6,18 +6,18 @@ require "dont_repeat_for/version"
 # Example 1:
 # ```ruby
 #   20.times do
-#     DontRepeatFor.new("test_dont_repeat/test", 5.minutes) { puts "This message will only be displayed once every 5 minutes.";
+#     DontRepeatFor.new(5.minutes, "test_dont_repeat/test") { puts "This message will only be displayed once every 5 minutes.";
 #     sleep(1.minute)
 #   end
 # ```
 #
-# @hint: You can include an ID in the key to enforce rate limiting for a specific store.
+# @hint: You can include a model ID in the key to enforce rate limiting for a specific model.
 class DontRepeatFor
   attr_accessor :key, :time
 
   ##
-  # @param time [Integer] The amount of seconds that we don't want to repeat the process for
-  # @param key [String]  A unique key to identify the process that we don't want to repeat for the given time
+  # @param time [ActiveSupport::Duration|Integer] The amount of seconds that we don't want to repeat the process for
+  # @param key [String] A unique key to identify the process that we don't want to repeat for the given time
   def initialize(time, key)
     @key = key
     @time = time.to_i

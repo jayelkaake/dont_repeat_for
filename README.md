@@ -38,10 +38,10 @@ Requires `redis` to be available and installed. That's what it will use for memo
 
 ```ruby
 20.times do
-  DontRepeatFor.new("Everyone/Test", 1.second) { puts "This message will only be displayed once every 1 second."; }
+  DontRepeatFor.new(1.second, "Everyone/Test") { puts "This message will only be displayed once every 1 second."; }
 end
 sleep(1.second)
-DontRepeatFor.new("Everyone/Test", 1.second) { puts "This message will only be displayed once every 1 second."; }
+DontRepeatFor.new(1.second, "Everyone/Test") { puts "This message will only be displayed once every 1 second."; }
 
 # Output:
 # This message will only be displayed once every 1 second.
@@ -54,12 +54,12 @@ DontRepeatFor.new("Everyone/Test", 1.second) { puts "This message will only be d
 user1 = User.new(id: -1)
 user2 = User.new(id: -2)
 20.times do
-  DontRepeatFor.new("User-#{user1.id}/Test", 1.second) { puts "This message will only be displayed once every 1 second for user #{user1.id}."; }
-  DontRepeatFor.new("User-#{user2.id}/Test", 1.second) { puts "This message will only be displayed once every 1 second for user #{user2.id}."; }
+  DontRepeatFor.new(1.second, "User-#{user1.id}/Test") { puts "This message will only be displayed once every 1 second for user #{user1.id}."; }
+  DontRepeatFor.new(1.second, "User-#{user2.id}/Test") { puts "This message will only be displayed once every 1 second for user #{user2.id}."; }
 end
 sleep(1.second)
-DontRepeatFor.new("User-#{user1.id}/Test", 1.second) { puts "This message will only be displayed once every 1 second for user #{user1.id}."; }
-DontRepeatFor.new("User-#{user2.id}/Test", 1.second) { puts "This message will only be displayed once every 1 second for user #{user2.id}."; }
+DontRepeatFor.new(1.second, "User-#{user1.id}/Test") { puts "This message will only be displayed once every 1 second for user #{user1.id}."; }
+DontRepeatFor.new(1.second, "User-#{user2.id}/Test") { puts "This message will only be displayed once every 1 second for user #{user2.id}."; }
 
 # Output:
 # This message will only be displayed once every 1 second for user -1.
@@ -70,7 +70,7 @@ DontRepeatFor.new("User-#{user2.id}/Test", 1.second) { puts "This message will o
 
 # Other Things
 ### Roadmap
-* Make this system compatible with memory-baseds storage and other data storage systems.
+* Make this system compatible with memory-based storage and other data storage systems.
 
 ### Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/jayelkaake/dont_repeat_for.
